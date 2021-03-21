@@ -6,7 +6,11 @@ Webcam.set({
 });
 camera = document.getElementById("camera")
 Webcam.attach("camera");
-
+function Capture(){
+    Webcam.snap(function(data_uri){
+        document.getElementById("result").innerHTML = "<img src='"+data_uri+"'>";
+    });
+}
 console.log("ml5 version: " + ml5.version);
 var classifier = ml5.imageClassifier("https://teachablemachine.withgoogle.com/models/hLJh_ClDj/model.json", Model_Loaded);
 function Model_Loaded(){
